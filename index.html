@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List App</title>
+  <link rel="stylesheet" href="An.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar Section -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="C:\Users\adway\Downloads\TTC0822062.JPG" alt="Profile Picture" class="profile-picture">
+        <h2 class="profile-name">Do-it</h2>
+        <p class="profile-subtitle">Adway Mahesh E</p>
+      </div>
+      <nav class="menu">
+        <section>
+          <h3>Today’s Tasks</h3>
+          <ul>
+            <li>
+              <label><input type="radio" name="category" value="personal" checked> Personal</label>
+            </li>
+            <li>
+              <label><input type="radio" name="category" value="freelance"> Freelance</label>
+            </li>
+            <li>
+              <label><input type="radio" name="category" value="work"> Work</label>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Scheduled Tasks</h3>
+          <ul>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </section>
+      </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="content">
+      <header>
+        <h1>Today’s Main Focus</h1>
+        <h2>Design Team Meeting</h2>
+      </header>
+      <section class="task-input-section">
+        <input type="text" id="task-input" placeholder="What is your next task?">
+        <input type="date" id="task-date">
+        <input type="time" id="task-time">
+        <button class="add-task-btn" id="add-task-btn">+</button>
+      </section>
+      <section class="task-list" id="task-list">
+        <div class="task personal">
+          <span>Work out</span>
+          <span>8:00 am</span>
+        </div>
+        <div class="task work">
+          <span>Design Team Meeting</span>
+          <span>2:30 pm</span>
+        </div>
+        <div class="task freelance">
+          <span>Hand off the project</span>
+          <span>7:00 pm</span>
+        </div>
+        <div class="task personal">
+          <span>Read 5 pages of "Sprint"</span>
+          <span>10:30 pm</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Add new tasks dynamically
+    document.getElementById('add-task-btn').addEventListener('click', function () {
+      const taskInput = document.getElementById('task-input');
+      const taskList = document.getElementById('task-list');
+      const taskText = taskInput.value.trim();
+      const taskCategory = document.querySelector('input[name="category"]:checked').value;
+      const taskDate = document.getElementById('task-date').value;
+      const taskTime = document.getElementById('task-time').value;
+
+      if (taskText) {
+        // Create new task element
+        const taskDiv = document.createElement('div');
+        taskDiv.className = `task ${taskCategory}`; // Category class
+
+        const dateTimeText = taskDate ? `${taskDate} ${taskTime}` : 'Unscheduled';
+        taskDiv.innerHTML = `<span>${taskText}</span><span>${dateTimeText}</span>`;
+
+        // Add to task list
+        taskList.appendChild(taskDiv);
+
+        // Clear input fields
+        taskInput.value = '';
+        document.getElementById('task-date').value = '';
+        document.getElementById('task-time').value = '';
+      } else {
+        alert('Please enter a task!');
+      }
+    });
+  </script>
+</body>
+</html>

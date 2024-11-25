@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <link rel="stylesheet" href="AM.css">
+</head>
+<body>
+  <div class="settings-container">
+    <h1>Settings</h1>
+
+    <!-- Profile Settings -->
+    <section class="profile-settings">
+      <h2>Profile Settings</h2>
+      <div class="profile">
+        <img src="C:\Users\adway\Downloads\TTC0822062.JPG" alt="Profile Picture" class="profile-picture">
+        <input type="file" id="profile-picture-input" class="profile-picture-input" accept="image/*">
+      </div>
+      <label for="username">Username</label>
+      <input type="text" id="username" value="Adway Mahesh E" placeholder="Enter new username">
+      <button class="save-btn" id="save-profile-btn">Save Profile</button>
+    </section>
+
+    <!-- App Theme Settings -->
+    <section class="theme-settings">
+      <h2>App Theme</h2>
+      <label for="theme-select">Choose Theme</label>
+      <select id="theme-select">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+      <button class="save-btn" id="save-theme-btn">Save Theme</button>
+    </section>
+
+    <!-- Task Notification Settings -->
+    <section class="notification-settings">
+      <h2>Notification Settings</h2>
+      <label for="notifications-toggle">Enable Task Notifications</label>
+      <input type="checkbox" id="notifications-toggle" checked>
+      <button class="save-btn" id="save-notifications-btn">Save Notifications</button>
+    </section>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Save Profile Settings
+    document.getElementById('save-profile-btn').addEventListener('click', function() {
+      const username = document.getElementById('username').value;
+      alert('Profile updated successfully!');
+      // Implement further functionality to save the profile changes if needed
+    });
+
+    // Save Theme Settings
+    document.getElementById('save-theme-btn').addEventListener('click', function() {
+      const theme = document.getElementById('theme-select').value;
+      if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('light-theme');
+      } else {
+        document.body.classList.add('light-theme');
+        document.body.classList.remove('dark-theme');
+      }
+      alert('Theme updated successfully!');
+    });
+
+    // Save Notification Settings
+    document.getElementById('save-notifications-btn').addEventListener('click', function() {
+      const notificationsEnabled = document.getElementById('notifications-toggle').checked;
+      alert('Notification settings updated!');
+      // Implement further functionality to handle notifications
+    });
+  </script>
+</body>
+</html>
